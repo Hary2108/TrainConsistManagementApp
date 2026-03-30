@@ -1,26 +1,50 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class Trainconsistentapp {
+// Bogie class (same as UC7)
+class Bogie {
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    public String toString() {
+        return "Bogie: " + name + " | Capacity: " + capacity;
+    }
+}
+
+public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Create HashMap for bogie and capacity
-        Map<String, Integer> bogieCapacityMap = new HashMap<>();
+        // Original Bogie List (same as UC7)
+        List<Bogie> bogieList = new ArrayList<>();
 
-        // Add bogie-capacity mappings
-        bogieCapacityMap.put("Sleeper", 72);
-        bogieCapacityMap.put("AC Chair", 54);
-        bogieCapacityMap.put("First Class", 24);
+        bogieList.add(new Bogie("Sleeper", 72));
+        bogieList.add(new Bogie("AC Chair", 54));
+        bogieList.add(new Bogie("First Class", 24));
 
-        // Display bogie capacities
-        System.out.println("\nBogie Capacity Details:");
+        // Display original list
+        System.out.println("\nAll Bogies:");
+        for (Bogie b : bogieList) {
+            System.out.println(b);
+        }
 
-        for (Map.Entry<String, Integer> entry : bogieCapacityMap.entrySet()) {
-            System.out.println("Bogie: " + entry.getKey() +
-                    " | Capacity: " + entry.getValue());
+        //  Stream Filtering (capacity > 60)
+        List<Bogie> filteredBogies = bogieList.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+        // Display filtered result
+        System.out.println("\nFiltered Bogies (Capacity > 60):");
+        for (Bogie b : filteredBogies) {
+            System.out.println(b);
         }
     }
 }
