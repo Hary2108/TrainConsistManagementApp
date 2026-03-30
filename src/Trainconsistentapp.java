@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-// Bogie class (same as UC7)
+// Bogie class (same as UC7 & UC8)
 class Bogie {
     String name;
     int capacity;
@@ -13,7 +14,7 @@ class Bogie {
     }
 
     public String toString() {
-        return "Bogie: " + name + " | Capacity: " + capacity;
+        return "(" + capacity + ")";
     }
 }
 
@@ -23,28 +24,31 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Original Bogie List (same as UC7)
+        // Create Bogie List
         List<Bogie> bogieList = new ArrayList<>();
 
         bogieList.add(new Bogie("Sleeper", 72));
         bogieList.add(new Bogie("AC Chair", 54));
         bogieList.add(new Bogie("First Class", 24));
+        bogieList.add(new Bogie("Sleeper", 72)); // duplicate type
+        bogieList.add(new Bogie("AC Chair", 54));
 
         // Display original list
         System.out.println("\nAll Bogies:");
         for (Bogie b : bogieList) {
-            System.out.println(b);
+            System.out.println("Bogie: " + b.name + " | Capacity: " + b.capacity);
         }
 
-        //  Stream Filtering (capacity > 60)
-        List<Bogie> filteredBogies = bogieList.stream()
-                .filter(b -> b.capacity > 60)
-                .collect(Collectors.toList());
+        //  Grouping using Stream API
+        Map<String, List<Bogie>> groupedBogies = bogieList.stream()
+                .collect(Collectors.groupingBy(b -> b.name));
 
-        // Display filtered result
-        System.out.println("\nFiltered Bogies (Capacity > 60):");
-        for (Bogie b : filteredBogies) {
-            System.out.println(b);
+        // Display grouped result
+        System.out.println("\nGrouped Bogies (By Type):");
+
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+            System.out.print(entry.getKey() + " -> ");
+            System.out.println(entry.getValue());
         }
     }
 }
