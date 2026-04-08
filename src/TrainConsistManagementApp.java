@@ -1,51 +1,52 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
-// Bogie class
-class Bogie {
-    String name;
-    int capacity;
-
-    // Constructor
-    Bogie(String name, int capacity) {
-        this.name = name;
-        this.capacity = capacity;
-    }
-
-    // Display method
-    public String toString() {
-        return "Bogie: " + name + " | Capacity: " + capacity;
-    }
-}
-
+// Main Class
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App ===");
+        System.out.println("=== UC16: Sort Passenger Bogies by Capacity (Bubble Sort) ===");
 
-        // Create List of Bogies
-        List<Bogie> bogieList = new ArrayList<>();
+        // Example passenger bogie capacities
+        int[] capacities = {72, 56, 24, 70, 60};
 
-        // Add passenger bogies
-        bogieList.add(new Bogie("Sleeper", 72));
-        bogieList.add(new Bogie("AC Chair", 54));
-        bogieList.add(new Bogie("First Class", 24));
+        System.out.print("Original Capacities: ");
+        printArray(capacities);
 
-        // Before sorting
-        System.out.println("\nBefore Sorting:");
-        for (Bogie b : bogieList) {
-            System.out.println(b);
+        // Perform Bubble Sort
+        bubbleSort(capacities);
+
+        System.out.print("Sorted Capacities:   ");
+        printArray(capacities);
+
+        System.out.println("Program continues...");
+    }
+
+    // Bubble Sort Method
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+
+        // Outer loop for passes
+        for (int i = 0; i < n - 1; i++) {
+
+            // Inner loop for comparison
+            for (int j = 0; j < n - 1 - i; j++) {
+
+                // Compare adjacent elements
+                if (arr[j] > arr[j + 1]) {
+
+                    // Swap logic
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
         }
+    }
 
-        // Sort by capacity (ascending)
-        bogieList.sort(Comparator.comparingInt(b -> b.capacity));
-
-        // After sorting
-        System.out.println("\nAfter Sorting (By Capacity - Ascending):");
-        for (Bogie b : bogieList) {
-            System.out.println(b);
+    // Utility method to print array
+    public static void printArray(int[] arr) {
+        for (int val : arr) {
+            System.out.print(val + " ");
         }
+        System.out.println();
     }
 }
