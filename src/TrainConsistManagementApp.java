@@ -66,7 +66,6 @@ class RectangularBogie extends GoodsBogie {
         }
     }
 }
-
 // Cylindrical Bogie
 class CylindricalBogie extends GoodsBogie {
 
