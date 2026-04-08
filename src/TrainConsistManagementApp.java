@@ -1,8 +1,6 @@
 // Main Class
 public class TrainConsistManagementApp {
-
     public static void main(String[] args) {
-
         System.out.println("=== Train Consist Management App - UC15 ===");
 
         // Create bogies
@@ -57,7 +55,7 @@ class RectangularBogie extends GoodsBogie {
         super(bogieId);
     }
 
-    @Override
+
     protected void validateCargo(String cargoType) {
         if (cargoType.equalsIgnoreCase("Petroleum")) {
             throw new CargoSafetyException(
@@ -81,7 +79,6 @@ class CylindricalBogie extends GoodsBogie {
 
 // Custom Runtime Exception
 class CargoSafetyException extends RuntimeException {
-
     public CargoSafetyException(String message) {
         super(message);
     }
