@@ -1,18 +1,25 @@
+import java.util.Arrays;
+
 // Main Class
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC18: Linear Search for Bogie ID ===");
+        System.out.println("=== UC19: Binary Search for Bogie ID ===");
 
-        // Array of bogie IDs (unsorted)
-        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
+        // Example (can be sorted or unsorted)
+        String[] bogieIds = {"BG309", "BG101", "BG550", "BG205", "BG412"};
 
-        // Search key (can be taken from user input if needed)
-        String searchKey = "BG309";
+        // Search key
+        String searchKey = "BG205";
 
-        // Perform search
-        boolean found = linearSearch(bogieIds, searchKey);
+        // Ensure sorting before binary search
+        Arrays.sort(bogieIds);
+
+        System.out.println("Sorted Bogie IDs: " + Arrays.toString(bogieIds));
+
+        // Perform Binary Search
+        boolean found = binarySearch(bogieIds, searchKey);
 
         // Display result
         if (found) {
@@ -24,18 +31,33 @@ public class TrainConsistManagementApp {
         System.out.println("Program continues...");
     }
 
-    // Linear Search Method
-    public static boolean linearSearch(String[] arr, String key) {
+    // Binary Search Method
+    public static boolean binarySearch(String[] arr, String key) {
 
-        // Traverse array sequentially
-        for (int i = 0; i < arr.length; i++) {
+        int low = 0;
+        int high = arr.length - 1;
 
-            // Compare using equals()
-            if (arr[i].equals(key)) {
-                return true; // Match found (early termination)
+        // Handle empty array
+        if (arr.length == 0) {
+            return false;
+        }
+
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            // Compare using compareTo()
+            int comparison = key.compareTo(arr[mid]);
+
+            if (comparison == 0) {
+                return true; // Match found
+            } else if (comparison < 0) {
+                high = mid - 1; // Search left half
+            } else {
+                low = mid + 1; // Search right half
             }
         }
 
-        return false; // No match found
+        return false; // Not found
     }
 }
