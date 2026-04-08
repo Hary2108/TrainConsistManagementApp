@@ -2,12 +2,18 @@
 /shelf/
 /workspace.xml
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feature/UC15
 # Ignored default folder with query files
 /queries/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+<<<<<<< HEAD
 =======
 >>>>>>> feature/UC7
+=======
+>>>>>>> feature/UC15
 # Editor-based HTTP Client requests
 /httpRequests/

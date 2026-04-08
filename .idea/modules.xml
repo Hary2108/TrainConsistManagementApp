@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Train consistent management app.iml" filepath="$PROJECT_DIR$/Train consistent management app.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/TrainConsistManagementApp.iml" filepath="$PROJECT_DIR$/TrainConsistManagementApp.iml" />
+>>>>>>> feature/UC15
     </modules>
   </component>
 </project>
